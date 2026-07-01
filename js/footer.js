@@ -39,10 +39,10 @@
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#seo-content">About Notepad Online</a></li>
-            <li href="#">Privacy Policy</li>
-            <li href="#">Terms of Use</li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li href="/privacy">Privacy Policy</li>
+            <li href="/terms">Terms of Use</li>
           </ul>
         </div>
       </div>
