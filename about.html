@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — FreeNotepad</title>
+<meta name="description" content="Meet Junaid Tanoli, the founder of FreeNotepad, and learn about our mission to build fast, lightweight, and completely private web utility tools.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#F7F2E6">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- Schema: AboutPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About FreeNotepad",
+  "url": "https://freenotepad.github.io/about.html",
+  "description": "Learn about FreeNotepad's design philosophies and its founder, Junaid Tanoli."
+}
+</script>
+</head>
+<body>
+
+<script src="js/header.js"></script>
+
+<main>
+  <!-- =========================================================
+       HERO / STORY SECTION
+  ========================================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-top" style="align-items: flex-start;">
+        <div class="hero-copy reveal in">
+          <span class="eyebrow">Our Mission</span>
+          <h1 style="margin-top:14px;">Built for speed. Designed for <span class="hl">privacy</span>.</h1>
+          <p class="lead">FreeNotepad was born out of a simple frustration: why does every modern text tool require a login, cookie consent banners, data tracking, and slow loading screens just to jot down a quick draft?</p>
+          <p style="color: var(--ink-soft); line-height: 1.6; margin-top: 14px;">We believe software should work like real-world paper. When you open a notepad on your physical desk, it doesn't ask you to sign in with an account, accept cookies, or connect to a cloud network. It is just ready for your ink immediately.</p>
+        </div>
+
+        <div class="hero-visual reveal in">
+          <div class="notebook" style="transform: rotate(1deg); margin-top: 20px;">
+            <div class="notebook-tabbar">
+              <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+              <span class="fname">leadership.txt</span>
+            </div>
+            <div style="padding: 30px; font-family: var(--font-body); line-height: 1.6;">
+              <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 4px; color: var(--ink);">Junaid Tanoli</h3>
+              <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--pencil); text-transform: uppercase; margin: 0 0 16px 0; font-weight: 600;">CEO &amp; Founder</p>
+              <p style="font-size: 0.9rem; color: var(--ink-soft); margin: 0;">"My goal is to create browser utilities that respect user privacy by performing data transactions locally within the client container. Your notes should always remain yours alone."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       OUR CORE PHILOSOPHIES
+  ========================================================== -->
+  <section class="features" style="border-top: 2px solid var(--ink);">
+    <div class="container">
+      <div class="section-head center reveal in">
+        <span class="eyebrow">The Principles</span>
+        <h2 class="section-title" style="margin-top:14px;">How we approach building web tools</h2>
+        <p>Every decision behind FreeNotepad follows three simple architecture goals.</p>
+      </div>
+
+      <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="feature-card reveal in">
+          <div class="feature-icon">⚡</div>
+          <h3>Zero Server Footprints</h3>
+          <p>We do not store your drafts or snippets on remote cloud endpoints. Your written entries live locally inside your web browser configuration.</p>
+        </div>
+        <div class="feature-card reveal in">
+          <div class="feature-icon">✨</div>
+          <h3>Minimal Friction</h3>
+          <p>No account authentication, no verification emails, and no subscription paywalls. You are always one click away from a clean scratchpad environment.</p>
+        </div>
+        <div class="feature-card reveal in">
+          <div class="feature-icon">🎨</div>
+          <h3>Organic Interfaces</h3>
+          <p>Taking design cues from classic physical office equipment—featuring ruled alignment guidelines, high-contrast borders, and warm paper textures.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/footer.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
