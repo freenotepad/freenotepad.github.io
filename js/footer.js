@@ -17,12 +17,12 @@
         </div>
 
         <div class="footer-col">
-          <h4>Editor</h4>
+          <h4>More Tools</h4>
           <ul>
-            <li><a href="#editor-top">Online Notepad</a></li>
-            <li><a href="#features">All Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#compare">Notepad vs. Word</a></li>
+            <li><a href="/dream-journal">Dream Journal</a></li>
+            <li><a href="/decision-wheel">Decision Wheel</a></li>
+            <li><a href="/memo-notepad">Memo Notepad</a></li>
+            <li><a href="/study-planner">Study Planner</a></li>
           </ul>
         </div>
 
