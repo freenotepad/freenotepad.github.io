@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Planner — Free Online Study Schedule & Task Tracker</title>
+<meta name="description" content="Plan your study sessions with a free online study planner. Track tasks by priority and due date, and lay out a weekly study schedule — no sign-up required.">
+<meta name="keywords" content="study planner, study schedule maker, study planner online, homework planner, student task tracker, weekly study schedule, exam planner, study organizer">
+<link rel="canonical" href="https://freenotepad.github.io/study-planner.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Study Planner — Free Online Study Schedule & Task Tracker">
+<meta property="og:description" content="Track study tasks by priority and due date, and build a weekly study schedule — free, in your browser, no sign-up.">
+<meta property="og:url" content="https://freenotepad.github.io/study-planner.html">
+<meta property="og:site_name" content="FreeNotepad">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Study Planner — Free Online Study Schedule & Task Tracker">
+<meta name="twitter:description" content="A free study planner with task priorities, due dates, and a weekly schedule grid. No installs, no sign-up.">
+
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#F7F2E6">
+
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/apps.css">
+
+<!-- Schema: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Study Planner",
+  "url": "https://freenotepad.github.io/study-planner.html",
+  "applicationCategory": "EducationApplication",
+  "operatingSystem": "Any (Web Browser)",
+  "description": "A free online study planner for tracking study tasks by subject, priority, and due date, plus a weekly schedule grid for planning study sessions. No sign-up required.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Task list with subject, due date, and priority",
+    "Progress and completion stats",
+    "Weekly study schedule grid",
+    "Mark tasks complete with one click",
+    "Saves your plan in the browser",
+    "Works on any device"
+  ]
+}
+</script>
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freenotepad.github.io/" },
+    { "@type": "ListItem", "position": 2, "name": "Study Planner", "item": "https://freenotepad.github.io/study-planner.html" }
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is the Study Planner really free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Study Planner is completely free with no sign-up, no subscription, and no limits on tasks or schedule entries." } },
+    { "@type": "Question", "name": "Do I need an account to save my study plan?", "acceptedAnswer": { "@type": "Answer", "text": "No account is needed. Your tasks and schedule are saved automatically to your browser's local storage on your own device." } },
+    { "@type": "Question", "name": "Can I set priorities and due dates for tasks?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each task can have a subject, a due date, and a priority level of low, medium, or high." } },
+    { "@type": "Question", "name": "What is the weekly schedule grid for?", "acceptedAnswer": { "@type": "Answer", "text": "The schedule tab lets you block out study sessions across the week by clicking a time slot and labeling it with a subject, similar to a paper timetable." } },
+    { "@type": "Question", "name": "Will I lose my plan if I close the browser tab?", "acceptedAnswer": { "@type": "Answer", "text": "No. Your tasks and schedule stay saved in your browser's local storage, so they're still there the next time you open the page on the same device." } },
+    { "@type": "Question", "name": "Does the Study Planner work on mobile phones and tablets?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The planner is fully responsive and works smoothly on phones, tablets, laptops, and desktops." } }
+  ]
+}
+</script>
+</head>
+<body data-tool="study-planner">
+
+<script src="js/header.js"></script>
+
+<main>
+
+  <!-- =========================================================
+       HERO + APP
+  ========================================================== -->
+  <section class="hero" id="planner-top">
+    <div class="container">
+      <div class="section-head center reveal in">
+        <span class="eyebrow">100% Free · No Sign-Up</span>
+        <h1 class="section-title" style="margin-top:14px;">A free <span class="hl">study planner</span> that keeps your week organized.</h1>
+        <p>Track tasks by subject, priority, and due date, then lay out a weekly study schedule — everything saves automatically as you go.</p>
+      </div>
+
+      <div class="app-shell reveal in">
+        <div class="app-toolbar">
+          <span class="app-toolbar-title">study-planner.app</span>
+          <button class="pill-btn active" id="tabTasksBtn" type="button">Tasks</button>
+          <button class="pill-btn" id="tabScheduleBtn" type="button">Weekly Schedule</button>
+        </div>
+        <div class="app-body">
+
+          <div class="planner-stats">
+            <div class="planner-stat"><strong id="statTotal">0</strong><span>Total Tasks</span></div>
+            <div class="planner-stat"><strong id="statDone">0</strong><span>Completed</span></div>
+            <div class="planner-stat"><strong id="statPending">0</strong><span>Pending</span></div>
+            <div class="planner-stat"><strong id="statProgress">0%</strong><span>Progress</span></div>
+          </div>
+
+          <div id="tasksPanel">
+            <form class="task-form" id="taskForm">
+              <div class="input-row">
+                <input type="text" id="taskTitleInput" placeholder="What do you need to study?" aria-label="Task title" required>
+              </div>
+              <div class="input-row">
+                <input type="text" id="taskSubjectInput" placeholder="Subject (optional)" aria-label="Subject">
+                <input type="date" id="taskDueInput" aria-label="Due date">
+                <select id="taskPriorityInput" aria-label="Priority">
+                  <option value="low">Low priority</option>
+                  <option value="medium" selected>Medium priority</option>
+                  <option value="high">High priority</option>
+                </select>
+                <button type="submit" class="btn btn-primary btn-sm">Add Task</button>
+              </div>
+            </form>
+
+            <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
+              <button class="pill-btn" id="clearDoneBtn" type="button">Clear completed</button>
+            </div>
+
+            <ul class="task-list" id="taskList"></ul>
+          </div>
+
+          <div id="schedulePanel" style="display:none;">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:14px;">
+              <button class="pill-btn" id="scheduleClearBtn" type="button">Clear schedule</button>
+            </div>
+            <p style="color:var(--ink-soft); font-size:0.88rem; margin:0 0 14px;">Click any time slot to add or edit a subject for that block.</p>
+            <div class="schedule-grid" id="scheduleGrid"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       DESCRIPTION
+  ========================================================== -->
+  <section class="seo-content" id="description">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Description</span>
+        <h2 class="section-title" style="margin-top:14px;">What is the Study Planner?</h2>
+        <p>A lightweight way to organize study tasks and see your week at a glance.</p>
+      </div>
+
+      <div class="content-columns reveal">
+        <div>
+          <h3>A study planner online, built for real workloads</h3>
+          <p>The Study Planner is a free study schedule maker for students who want a clear view of what's due, what's next, and where the time actually goes. Add tasks with a subject, due date, and priority, then check them off as you finish.</p>
+
+          <h3>A homework planner that keeps priorities visible</h3>
+          <p>Every task is tagged as low, medium, or high priority, so the things that matter most never get buried at the bottom of a long list. The stats bar keeps a running total of your progress as you complete tasks.</p>
+        </div>
+        <div>
+          <h3>A weekly study schedule you can build in minutes</h3>
+          <p>Switch to the schedule tab to lay out a weekly study schedule across seven days and eight time blocks. Click any slot to label it with a subject — a fast alternative to a printed timetable.</p>
+
+          <h3>Everything saved automatically, nothing to install</h3>
+          <p>This student task tracker runs entirely in your browser. Your tasks and schedule are saved to local storage automatically, so your exam planner is exactly where you left it next time you open the page.</p>
+        </div>
+      </div>
+
+      <div class="keyword-tags reveal">
+        <span>study planner</span>
+        <span>study schedule maker</span>
+        <span>homework planner</span>
+        <span>student task tracker</span>
+        <span>weekly study schedule</span>
+        <span>exam planner</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BENEFITS
+  ========================================================== -->
+  <section class="features" id="benefits">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Benefits</span>
+        <h2 class="section-title" style="margin-top:14px;">Why students use a study planner</h2>
+        <p>A clear plan makes study time more effective and a lot less stressful.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">✅</div>
+          <h3>Never miss a due date</h3>
+          <p>See every deadline at a glance, sorted with the soonest and highest priority first.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🎯</div>
+          <h3>Prioritize what matters</h3>
+          <p>Tag tasks by priority so the most important work never gets lost in the list.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🗓️</div>
+          <h3>Plan your whole week</h3>
+          <p>Block out study sessions by subject across a full weekly schedule grid.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <h3>Track real progress</h3>
+          <p>A live completion percentage shows how much of your workload is actually done.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">💾</div>
+          <h3>Nothing to lose</h3>
+          <p>Tasks and schedule save automatically, so a closed tab never means lost work.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">⚡</div>
+          <h3>Fast to update</h3>
+          <p>Add a task or reschedule a study block in a couple of clicks, no menus to dig through.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">📱</div>
+          <h3>Works on any device</h3>
+          <p>Plan from a laptop and check tasks off from your phone between classes.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔒</div>
+          <h3>Private by design</h3>
+          <p>Your study plan stays in your browser and is never uploaded anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       HOW TO USE
+  ========================================================== -->
+  <section id="how-to">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">How To Use</span>
+        <h2 class="section-title" style="margin-top:14px;">How the Study Planner works</h2>
+        <p>Set up your task list, then map out your week.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card reveal">
+          <div class="step-num">01</div>
+          <h3>Add a task</h3>
+          <p>Type what you need to study, then set a subject, due date, and priority.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">02</div>
+          <h3>Check tasks off</h3>
+          <p>Tap the checkbox as you complete each task — your progress updates instantly.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">03</div>
+          <h3>Switch to Schedule</h3>
+          <p>Open the Weekly Schedule tab to see your seven-day, eight-block grid.</p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-num">04</div>
+          <h3>Block out study time</h3>
+          <p>Click a time slot and label it with a subject to plan your study sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       USE CASES
+  ========================================================== -->
+  <section class="usecases" id="use-cases">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Built For Everyone</span>
+        <h2 class="section-title" style="margin-top:14px;">Who uses a study planner?</h2>
+        <p>From weekly reading to exam season, a clear plan helps any kind of studying.</p>
+      </div>
+
+      <div class="usecase-grid">
+        <div class="usecase-card reveal">
+          <h3>High school students</h3>
+          <p>Track homework across subjects and never miss a due date again.</p>
+        </div>
+        <div class="usecase-card reveal">
+          <h3>College students</h3>
+          <p>Balance readings, assignments, and exam prep with clear priorities.</p>
+        </div>
+        <div class="usecase-card reveal">
+          <h3>Self-learners</h3>
+          <p>Structure independent study around a real weekly schedule.</p>
+        </div>
+        <div class="usecase-card reveal">
+          <h3>Parents &amp; tutors</h3>
+          <p>Help a student plan their week and see completed work at a glance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ALL TOOLS
+  ========================================================== -->
+  <div id="all-tools-mount"></div>
+
+  <!-- =========================================================
+       FAQ
+  ========================================================== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Questions</span>
+        <h2 class="section-title" style="margin-top:14px;">Frequently asked questions</h2>
+        <p>Quick answers about using the free Study Planner.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">Is the Study Planner really free to use?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes. The Study Planner is completely free with no sign-up, no subscription, and no limits on tasks or schedule entries.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need an account to save my study plan?<span class="plus">+</span></button>
+          <div class="faq-a"><p>No account is needed. Your tasks and schedule are saved automatically to your browser's local storage on your own device.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I set priorities and due dates for tasks?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes. Each task can have a subject, a due date, and a priority level of low, medium, or high.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is the weekly schedule grid for?<span class="plus">+</span></button>
+          <div class="faq-a"><p>The schedule tab lets you block out study sessions across the week by clicking a time slot and labeling it with a subject, similar to a paper timetable.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will I lose my plan if I close the browser tab?<span class="plus">+</span></button>
+          <div class="faq-a"><p>No. Your tasks and schedule stay saved in your browser's local storage, so they're still there the next time you open the page on the same device.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Does the Study Planner work on mobile phones and tablets?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes. The planner is fully responsive and works smoothly on phones, tablets, laptops, and desktops.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/footer.js"></script>
+<script src="js/app.js"></script>
+<script src="js/study-planner.js"></script>
+<script src="js/all-tools.js"></script>
+</body>
+</html>
